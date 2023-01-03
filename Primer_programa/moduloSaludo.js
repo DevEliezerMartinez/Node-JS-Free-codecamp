@@ -1,4 +1,4 @@
-/* const saludar = require("./app.js" ); */
+ /* const saludar = require("./app.js" ); */
 // alternativa para solo usar cierta función
 const {despedida, saludar} = require("./app.js" );
 
