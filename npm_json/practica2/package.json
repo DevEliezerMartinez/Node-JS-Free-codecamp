@@ -1,0 +1,17 @@
+{
+  "name": "practica2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eliezer Martinez",
+  "license": "ISC",
+  "devDependencies": {
+    "s-age": "^1.1.2"
+  },
+  "dependencies": {
+    "s-ago": "^2.2.0"
+  }
+}
