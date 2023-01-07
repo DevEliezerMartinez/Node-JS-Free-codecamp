@@ -40,3 +40,8 @@ mipedido
     console.log(mensajeError);
 });
 
+// se puede indexar mejor
+mipedido
+.then(mensajeConfirmacion)
+.catch(mensajeError);
+
