@@ -9,13 +9,13 @@ let infoCurso = {
 
         },{
             id:2,
-            titulo: ' Node Intermedio',
+            titulo: 'Node Intermedio',
             lenguaje: 'Javascript',
             vistas: 18000,
             nivel: 'Intermedio'
         },{
             id:3,
-            titulo: ' Node Avanzado',
+            titulo: 'Node Avanzado',
             lenguaje: 'Typescript',
             vistas: 28500,
             nivel: 'Avanzado'
@@ -40,4 +40,4 @@ let infoCurso = {
     ]
 }
 
-module.exports = infoCurso;
+module.exports.db = infoCurso;

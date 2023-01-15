@@ -1,3 +1,4 @@
+// declaracion de modulos
 const htpp = require ('http');
 const cursos = require('./cursos.js');
 /* console.log(cursos); */
@@ -11,7 +12,10 @@ const {method} = req;
         case 'POST':
             return manejoPost(req,res);
         default:
-            console.log(`El metodo no puede ser manejado por el servidor ${method} `);
+            console.log(`El metodo: ${method} no puede ser manejado por el servidor  `);
+            res.statusCode= 504;
+            res.end('El servidor no esta preparado para este método')
+            break;
     }
 
 });
@@ -21,9 +25,11 @@ servidor.listen(8080, ()=>{
 });
 
 manejoGET=(req,res) =>{
-    const path = req.url;
+    console.log("---Método get");
+    const path = req.url;   
 
     if (path === '/') {
+        res.writeHead(200,{'Content-Type':'application/Json'})
         res.statusCode = 200;
         res.end("Bienvenido al routing de Node");
     }else if (path === '/cursos'){
@@ -35,12 +41,28 @@ manejoGET=(req,res) =>{
         res.end(JSON.stringify(cursos.programacion));
         console.log(JSON.stringify(cursos.programacion));
     }
-    res.statusCode= 404;
-    res.end("No existe")
+    //res.statusCode= 404;
+   // res.end("No existe")
+    console.log("Se esta buscando algo que no existe");
+
+    console.log("Método get---");
 }
 
 manejoPost = (req,res)=>{
     const path = req.url;
+
+    let cuerpo ='';
+    req.on('data',contenido => {
+        cuerpo += contenido.toString();
+
+    });
+
+    req.on ('end', ()=>{
+        console.log(cuerpo);
+        console.log(typeof(cuerpo));
+        console.log("entendido");
+        console.log();
+    });
 
     if (path === '/cursos/programacion') {
         res.end('se recibio una solicitud post');

@@ -1,7 +1,7 @@
-const miURL = new URL('https://ejemplo.org/cursos/programacion?ordenar=vistas&nivel=1');
+const miURL = new URL('http://sanmarcos.guerrero.gob.mx/portal-de-transparencia/');
 
-console.log(miURL.host);
-console.log(miURL.pathname);
+console.log("Host:"+miURL.host);
+console.log("Path Name"+miURL.pathname);
 console.log(miURL.searchParams);
 console.log(miURL.searchParams.get('ordenar'));
 console.log(miURL.searchParams.get('nivel'));
