@@ -101,4 +101,4 @@ const infoCurso = {
     ]
 }
 
-module.exports.db =infoCurso;
+module.exports.infoCurso =infoCurso;

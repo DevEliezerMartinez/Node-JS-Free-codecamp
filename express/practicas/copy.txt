@@ -1,0 +1,35 @@
+
+
+
+
+
+ routerProgramacion.post('/post',(req,res)=>{
+    let cursoNuevo = req.body;
+    db.programacion.push(cursoNuevo);
+    res.send(JSON.stringify(db.programacion))
+ });
+
+
+ routerProgramacion.put('/:id',(req,res)=>{
+   /*  const cursoActualizado = req.body;
+    const idExtraido = req.params.id;
+
+    const indice=db.programacion.findIndex(curso => curso.id == idExtraido);
+
+    if (indice>0) {
+        db.programacion[indice]= cursoActualizado;
+    }
+
+    res.send(JSON.stringify(db.programacion))
+
+ */
+res.send("se recibio una peticion put")
+ });
+
+
+//ejecucion
+const PUERTO = process.env.PORT || 8080;
+
+app.listen(PUERTO,()=>{
+    console.log(`El servidor esta escuchando en el puerto:  ${PUERTO}`);
+});
