@@ -4,7 +4,7 @@ const app = express();
 
 
 //BD--
-const {db} = require('./cursos.js')
+const {infoCurso} = require('./cursos.js')
 
 //routing
 app.get('/',(req,res)=>{
@@ -15,16 +15,16 @@ app.get('/',(req,res)=>{
 
 
 app.get('/api/cursos',(req,res)=>{
-    res.send(JSON.stringify(db))
+    res.send(JSON.stringify(infoCurso))
 });
 
 
 app.get('/api/cursos/programacion',(req,res)=>{
-    res.send(JSON.stringify(db.programacion))
+    res.send(JSON.stringify(infoCurso.programacion))
 });
 
 app.get('/api/cursos/matematicas',(req,res)=>{
-    res.send(JSON.stringify(db.matematicas))
+    res.send(JSON.stringify(infoCurso.matematicas))
 });
  
 //------RECUERDA ARREGLAR ESTO
@@ -47,7 +47,7 @@ app.get('/api/cursos/matematicas',(req,res)=>{
  app.get('/api/cursos/programacion/:leng',(req,res)=>{
     const lenguaje = req.params.leng;
 
-    const resultados = db.programacion.filter(curso=> curso.lenguaje=== lenguaje );
+    const resultados = infoCurso.programacion.filter(curso=> curso.lenguaje=== lenguaje );
 
     if (resultados.length ===0) {
         
@@ -63,7 +63,7 @@ app.get('/api/cursos/matematicas',(req,res)=>{
         const busqueda = req.params.tema;
        
 
-        const cursosFiltrados = db.matematicas.filter(curso=> curso.tema=== busqueda);
+        const cursosFiltrados = infoCurso.matematicas.filter(curso=> curso.tema=== busqueda);
 
         if (cursosFiltrados.length ===0) {
             return res.status(404).send(`no se encontraron cursos del tema de: ${busqueda}`)
@@ -81,11 +81,11 @@ app.get('/api/cursos/matematicas',(req,res)=>{
         const lenguajeC = req.params.lenguaje;
         const nivelC = req.params.nivel;
 
-        const cursosFiltrados = db.programacion.filter(curso => curso.lenguaje=== lenguajeC && curso.nivel ===nivelC);
+        const cursosFiltrados = infoCurso.programacion.filter(curso => curso.lenguaje=== lenguajeC && curso.nivel ===nivelC);
         if (cursosFiltrados.length ===0) {
             return res.status(404).send(`no se encontraron cursos del lenguaje de: ${lenguajeC} de nivel: ${nivelC}` )
         }
-        res.send(JSON.stringify(cursosFiltrados));
+        res.send(cursosFiltrados);
 
     });
 
